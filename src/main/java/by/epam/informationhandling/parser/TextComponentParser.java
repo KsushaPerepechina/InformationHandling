@@ -6,9 +6,9 @@ import by.epam.informationhandling.composite.Composite;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TextParser implements Parser {
+public class TextComponentParser implements ComponentParser {
     private static final String PARAGRAPH_REGEXP = "\\t([^\\t]+)\\n";
-    private static final Parser PARAGRAPH_PARSER = new ParagraphParser();
+    private static ComponentParser nextComponentParser = new ParagraphComponentParser();
 
     @Override
     public Component parse(String text) {
@@ -17,7 +17,7 @@ public class TextParser implements Parser {
         Matcher matcher = paragraphPattern.matcher(text);
         while (matcher.find()) {
             String paragraph = matcher.group(1);
-            Component paragraphComponent = PARAGRAPH_PARSER.parse(paragraph);
+            Component paragraphComponent = nextComponentParser.parse(paragraph);
             textComponent.addComponent(paragraphComponent);
         }
         return textComponent;

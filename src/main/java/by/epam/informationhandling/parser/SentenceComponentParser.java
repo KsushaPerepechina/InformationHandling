@@ -5,14 +5,14 @@ import by.epam.informationhandling.composite.Composite;
 
 import java.util.Arrays;
 
-public class SentenceParser implements Parser {
-    private static final Parser LEXEME_PARSER = new LexemeParser();
+public class SentenceComponentParser implements ComponentParser {
+    private static ComponentParser nextComponentParser = new LexemeComponentParser();
 
     @Override
     public Component parse(String sentence) {
         Component sentenceComponent = new Composite();
         Arrays.stream(sentence.split(" ")).forEach(lexeme -> {
-            Component lexemeComponent = LEXEME_PARSER.parse(lexeme);
+            Component lexemeComponent = nextComponentParser.parse(lexeme);
             sentenceComponent.addComponent(lexemeComponent);
         });
         return sentenceComponent;

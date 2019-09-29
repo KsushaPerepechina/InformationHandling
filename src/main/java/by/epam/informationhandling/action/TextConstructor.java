@@ -1,7 +1,7 @@
 package by.epam.informationhandling.action;
 
 import by.epam.informationhandling.composite.Component;
-import by.epam.informationhandling.composite.Leaf;
+import by.epam.informationhandling.composite.Symbol;
 
 import java.util.List;
 
@@ -15,10 +15,9 @@ public class TextConstructor {
             sentences.forEach(sentence -> {
                 List<Component> lexemes = sentence.getComponents();
                 lexemes.forEach(lexeme -> {
-                    text.append(" ");
                     List<Component> symbols = lexeme.getComponents();
                     symbols.forEach(symbol -> {
-                        Leaf symbolLeaf = (Leaf) symbol;
+                        Symbol symbolLeaf = (Symbol) symbol;
                         text.append(symbolLeaf.getValue());
                     });
                     text.append(" ");

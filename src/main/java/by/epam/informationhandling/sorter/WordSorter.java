@@ -1,23 +1,26 @@
 package by.epam.informationhandling.sorter;
 
 import by.epam.informationhandling.composite.Component;
-import by.epam.informationhandling.composite.Leaf;
+import by.epam.informationhandling.composite.Symbol;
 
 import java.util.Comparator;
 import java.util.List;
 
-public class LexemeSorter {//TODO sort words instead lexemes
-    public void sortLexemesByLength(Component sentence) {
+public class WordSorter {
+    public void sortWordsByLength(Component sentence) {
         List<Component> lexemes = sentence.getComponents();
-        lexemes.sort(Comparator.comparing(lexeme -> lexeme.getComponents().size()));
+        lexemes.sort(Comparator.comparing(lexeme -> lexeme.getComponents().stream().filter(component -> {
+            Symbol symbol = (Symbol)component;
+            return !symbol.isPunctuationMark();
+        }).count()));
     }
 
     public void sortLexemesByOccurrencesNumberSpecifiedSymbol(Component sentence, char symbol) {//TODO alphabet sorting
         List<Component> lexemes = sentence.getComponents();
         lexemes.sort(Comparator.comparing(lexeme -> lexeme.getComponents().stream().filter(x -> {
-            Leaf symbolComponent = (Leaf)x;
-            String character = symbolComponent.getValue().toLowerCase();
-            return character.equals(String.valueOf(symbol).toLowerCase());
+            Symbol symbolComponent = (Symbol)x;
+            char character = symbolComponent.getValue();
+            return character == symbol;
         }).count()));
     }
 }
