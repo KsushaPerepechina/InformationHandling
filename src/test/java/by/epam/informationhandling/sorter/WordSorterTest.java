@@ -1,29 +1,27 @@
 package by.epam.informationhandling.sorter;
 
-import by.epam.informationhandling.TextDataComponent;
 import by.epam.informationhandling.composite.Component;
-import by.epam.informationhandling.composite.Composite;
+import by.epam.informationhandling.parser.ComponentParser;
+import by.epam.informationhandling.parser.SentenceComponentParser;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class WordSorterTest {
     private WordSorter wordSorter;
-    private Component sentence;
+    private ComponentParser sentenceComponentParser;
 
     @BeforeClass
     public void setUp() {
         wordSorter = new WordSorter();
-        sentence = TextDataComponent.simpleSentence;
+        sentenceComponentParser = new SentenceComponentParser();
     }
 
     @Test
     public void parseTextTest() {
-        Component expected = new Composite();
-        expected.addComponent(TextDataComponent.oopWithPointLexeme);
-        expected.addComponent(TextDataComponent.javaLexeme);
-        expected.addComponent(TextDataComponent.supportsLexeme);
-        wordSorter.sortWordsByLength(sentence);
-        Assert.assertEquals(sentence, expected);
+        Component actual = sentenceComponentParser.parse("It must execute with high performance.");
+        Component expected = sentenceComponentParser.parse("It must with high execute performance.");
+        wordSorter.sortWordsByLength(actual);
+        Assert.assertEquals(actual, expected);
     }
 }

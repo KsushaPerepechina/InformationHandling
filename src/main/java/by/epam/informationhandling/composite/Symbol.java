@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.StringJoiner;
 
 public class Symbol implements Component {
-    private static final String PUNCTUATION_MARK_REGEXP = "[^A-Za-z0-9]";
+    private static final String PUNCTUATION_MARK_REGEXP = "[^A-z0-9]";
     private char value;
     private boolean punctuationMark;
 

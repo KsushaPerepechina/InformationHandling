@@ -14,13 +14,4 @@ public class WordSorter {
             return !symbol.isPunctuationMark();
         }).count()));
     }
-
-    public void sortLexemesByOccurrencesNumberSpecifiedSymbol(Component sentence, char symbol) {//TODO alphabet sorting
-        List<Component> lexemes = sentence.getComponents();
-        lexemes.sort(Comparator.comparing(lexeme -> lexeme.getComponents().stream().filter(x -> {
-            Symbol symbolComponent = (Symbol)x;
-            char character = symbolComponent.getValue();
-            return character == symbol;
-        }).count()));
-    }
 }

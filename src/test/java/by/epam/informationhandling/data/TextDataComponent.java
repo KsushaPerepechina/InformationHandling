@@ -1,4 +1,4 @@
-package by.epam.informationhandling;
+package by.epam.informationhandling.data;
 
 import by.epam.informationhandling.composite.Component;
 import by.epam.informationhandling.composite.Composite;
@@ -6,47 +6,46 @@ import by.epam.informationhandling.composite.Symbol;
 
 public class TextDataComponent {
     public static final String text = "\tYes. Java supports OOP. OOP is supported by Java. \n\tOOP is supported by Java. Java supports OOP. \n";
-
-    public static final Component aSymbolComponent = new Symbol('a');
-    public static final Component bSymbolComponent = new Symbol('b');
-    public static final Component dSymbolComponent = new Symbol('d');
-    public static final Component eSymbolComponent = new Symbol('e');
-    public static final Component iSymbolComponent = new Symbol('i');
-    public static final Component uppercaseJSymbolComponent = new Symbol('J');
-    public static final Component uppercaseOSymbolComponent = new Symbol('O');
-    public static final Component oSymbolComponent = new Symbol('o');
-    public static final Component uppercasePSymbolComponent = new Symbol('P');
-    public static final Component pSymbolComponent = new Symbol('p');
-    public static final Component rSymbolComponent = new Symbol('r');
-    public static final Component sSymbolComponent = new Symbol('s');
-    public static final Component tSymbolComponent = new Symbol('t');
-    public static final Component uSymbolComponent = new Symbol('u');
-    public static final Component vSymbolComponent = new Symbol('v');
-    public static final Component uppercaseYSymbolComponent = new Symbol('Y');
-    public static final Component ySymbolComponent = new Symbol('y');
-    public static final Component pointSymbolComponent = new Symbol('.');
-
-    public static final Component javaLexeme = new Composite();
-    public static final Component supportsLexeme = new Composite();
-    public static final Component oopWithPointLexeme = new Composite();
-    public static final Component oopLexeme = new Composite();
-    public static final Component isLexeme = new Composite();
-    public static final Component supportedLexeme = new Composite();
-    public static final Component byLexeme = new Composite();
-    public static final Component javaWithPointLexeme = new Composite();
-    public static final Component yesWithPointLexeme = new Composite();
-
-    public static final Component simpleSentence = new Composite();
-    public static final Component passiveVoiceSentence = new Composite();
-    public static final Component confirmationSentence = new Composite();
-
-    public static final Component firstParagraph = new Composite();
-    public static final Component secondParagraph = new Composite();
-
-    public static final Component textComponent = new Composite();
+    public static final Component TEXT_COMPONENT;
 
 
     static {
+        Component aSymbolComponent = new Symbol('a');
+        Component bSymbolComponent = new Symbol('b');
+        Component dSymbolComponent = new Symbol('d');
+        Component eSymbolComponent = new Symbol('e');
+        Component iSymbolComponent = new Symbol('i');
+        Component uppercaseJSymbolComponent = new Symbol('J');
+        Component uppercaseOSymbolComponent = new Symbol('O');
+        Component oSymbolComponent = new Symbol('o');
+        Component uppercasePSymbolComponent = new Symbol('P');
+        Component pSymbolComponent = new Symbol('p');
+        Component rSymbolComponent = new Symbol('r');
+        Component sSymbolComponent = new Symbol('s');
+        Component tSymbolComponent = new Symbol('t');
+        Component uSymbolComponent = new Symbol('u');
+        Component vSymbolComponent = new Symbol('v');
+        Component uppercaseYSymbolComponent = new Symbol('Y');
+        Component ySymbolComponent = new Symbol('y');
+        Component pointSymbolComponent = new Symbol('.');
+
+        Component javaLexeme = new Composite();
+        Component supportsLexeme = new Composite();
+        Component oopWithPointLexeme = new Composite();
+        Component oopLexeme = new Composite();
+        Component isLexeme = new Composite();
+        Component supportedLexeme = new Composite();
+        Component byLexeme = new Composite();
+        Component javaWithPointLexeme = new Composite();
+        Component yesWithPointLexeme = new Composite();
+
+        Component simpleSentence = new Composite();
+        Component passiveVoiceSentence = new Composite();
+        Component confirmationSentence = new Composite();
+
+        Component firstParagraph = new Composite();
+        Component secondParagraph = new Composite();
+
         javaLexeme.addComponent(uppercaseJSymbolComponent);
         javaLexeme.addComponent(aSymbolComponent);
         javaLexeme.addComponent(vSymbolComponent);
@@ -116,7 +115,8 @@ public class TextDataComponent {
         secondParagraph.addComponent(passiveVoiceSentence);
         secondParagraph.addComponent(simpleSentence);
 
-        textComponent.addComponent(firstParagraph);
-        textComponent.addComponent(secondParagraph);
+        TEXT_COMPONENT = new Composite();
+        TEXT_COMPONENT.addComponent(firstParagraph);
+        TEXT_COMPONENT.addComponent(secondParagraph);
     }
 }

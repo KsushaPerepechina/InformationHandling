@@ -1,28 +1,27 @@
 package by.epam.informationhandling.sorter;
 
-import by.epam.informationhandling.TextDataComponent;
 import by.epam.informationhandling.composite.Component;
-import by.epam.informationhandling.composite.Composite;
+import by.epam.informationhandling.parser.ComponentParser;
+import by.epam.informationhandling.parser.ParagraphComponentParser;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class SentenceSorterTest {
     private SentenceSorter sentenceSorter;
-    private Component paragraph;
+    private ComponentParser paragraphComponentParser;
 
     @BeforeClass
     public void setUp() {
         sentenceSorter = new SentenceSorter();
-        paragraph = TextDataComponent.secondParagraph;
+        paragraphComponentParser = new ParagraphComponentParser();
     }
 
     @Test
     public void parseTextTest() {
-        Component expected = new Composite();
-        expected.addComponent(TextDataComponent.simpleSentence);
-        expected.addComponent(TextDataComponent.passiveVoiceSentence);
-        sentenceSorter.sortSentencesByWordsNumber(paragraph);
-        Assert.assertEquals(paragraph, expected);
+        Component actual = paragraphComponentParser.parse("Java is a general-purpose programming language. Java supports OOP.");
+        Component expected = paragraphComponentParser.parse("Java supports OOP. Java is a general-purpose programming language.");
+        sentenceSorter.sortSentencesByWordsNumber(actual);
+        Assert.assertEquals(actual, expected);
     }
 }

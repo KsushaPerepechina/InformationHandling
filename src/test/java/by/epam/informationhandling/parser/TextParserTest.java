@@ -1,6 +1,6 @@
 package by.epam.informationhandling.parser;
 
-import by.epam.informationhandling.TextDataComponent;
+import by.epam.informationhandling.data.TextDataComponent;
 import by.epam.informationhandling.composite.Component;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -15,7 +15,7 @@ public class TextParserTest {
     public void setUp() {
         textComponentParser = new TextComponentParser();
         text = TextDataComponent.text;
-        textComponent = TextDataComponent.textComponent;
+        textComponent = TextDataComponent.TEXT_COMPONENT;
     }
 
     @Test
